@@ -10,7 +10,9 @@ function editNav() {
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
+const form = document.querySelector("form");
 const formData = document.querySelectorAll(".formData");
+const tournamentLbl = document.querySelector(".text-label")
 const closeBtn = document.querySelector(".close");
 const submitBtn = document.querySelector(".btn-submit");
 
@@ -20,8 +22,9 @@ const lastName = document.getElementById("last");
 const email = document.getElementById("email");
 const birthdate = document.getElementById("birthdate");
 const quantity = document.getElementById("quantity");
-const tournament = document.querySelector('input[name="location"]');
+const tournament = document.querySelector(`input[name="location"]`);
 const cge = document.querySelector("#checkbox1");
+const thankMsg = document.querySelector(".modal-thank");
 
 // Regex
 const emailRegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))+$/;
@@ -38,7 +41,7 @@ function launchModal() {
 }
 
 // close modal event
-closeBtn.addEventListener('click', closeModal);
+closeBtn.addEventListener("click", closeModal);
 
 // close modal form
 function closeModal() {
@@ -49,6 +52,11 @@ function closeModal() {
 function firstNameInvalid() {
   if (!firstName.value.match(nameRegExp)) {
     formData[0].setAttribute("data-error-visible", "true");
+    formData[0].setAttribute("data-error", "Entrez un prénom valide.");
+    return false;
+  } else {
+    formData[0].setAttribute("data-error-visible", "false");
+    return true;
   }
 }
 
@@ -56,6 +64,11 @@ function firstNameInvalid() {
 function lastNameInvalid() {
   if (!lastName.value.match(nameRegExp)) {
     formData[1].setAttribute("data-error-visible", "true");
+    formData[1].setAttribute("data-error", "Entrez un nom valide.");
+    return false;
+  } else {
+    formData[1].setAttribute("data-error-visible", "false");
+    return true;
   }
 }
 
@@ -63,6 +76,11 @@ function lastNameInvalid() {
 function emailInvalid() {
   if (!email.value.match(emailRegExp)) {
     formData[2].setAttribute("data-error-visible", "true");
+    formData[2].setAttribute("data-error", "Entrez un email valide.");
+    return false;
+  } else {
+    formData[2].setAttribute("data-error-visible", "false");
+    return true;
   }
 }
 
@@ -70,6 +88,11 @@ function emailInvalid() {
 function birthdateInvalid() {
   if (!birthdate.value.match(birthdateRegExp)) {
     formData[3].setAttribute("data-error-visible", "true");
+    formData[3].setAttribute("data-error", "Entrez une date de naissance valide.");
+    return false;
+  } else {
+    formData[3].setAttribute("data-error-visible", "false");
+    return true;
   }
 }
 
@@ -77,6 +100,11 @@ function birthdateInvalid() {
 function quantityInvalid() {
   if (!quantity.value.match(numberRegExp)) {
     formData[4].setAttribute("data-error-visible", "true");
+    formData[4].setAttribute("data-error", "Renseignez un nombre de tournoi.");
+    return false;
+  } else {
+    formData[4].setAttribute("data-error-visible", "false");
+    return true;
   }
 }
 
@@ -84,6 +112,11 @@ function quantityInvalid() {
 function tournamentInvalid() {
   if (document.querySelector('input[name="location"]:checked') === null) {
     formData[5].setAttribute("data-error-visible", "true");
+    formData[5].setAttribute("data-error", "Sélectionnez une option.");
+    return false;
+  } else {
+    formData[5].setAttribute("data-error-visible", "false");
+    return true;
   }
 }
 
@@ -91,20 +124,43 @@ function tournamentInvalid() {
 function cgeInvalid() {
     if(!cge.checked) {
       formData[6].setAttribute("data-error-visible", "true");
+      formData[6].setAttribute("data-error", "Veuillez lire et accepter les conditions.");
+      return false;
+    } else {
+      formData[6].setAttribute("data-error-visible", "false");
+      return true;
     }
 }
 
-// validate modal form
-submitBtn.addEventListener('submit', validate);
+// // // validate modal form
+submitBtn.addEventListener("click", validate);
 
 // validate tournament selection
-
-function validate() {
-  firstNameInvalid();
-  lastNameInvalid();
-  emailInvalid();
-  birthdateInvalid();
-  quantityInvalid();
-  tournamentInvalid();
-  cgeInvalid();
+function validate(e) {
+  // prevent closing modal & erasing user input data
+  e.preventDefault();
+  if (
+  firstNameInvalid() &&
+  lastNameInvalid() &&
+  emailInvalid() &&
+  birthdateInvalid() &&
+  quantityInvalid() &&
+  tournamentInvalid() &&
+  cgeInvalid() === true
+  ) {
+    function thanksModal() {
+      const elt = 0;
+      for (let i = 0; i < formData.length; i++) {
+        formData[i].style.display = "none";
+      }
+      tournamentLbl.style.display = "none";
+      thankMsg.style.display = "block";
+      submitBtn.setAttribute("value", "Fermer");
+      submitBtn.addEventListener("click", closeModal);
+    }
+    thanksModal();
+  } 
+  else {
+    console.log("Formulaire incomplet")
+  }
 }
