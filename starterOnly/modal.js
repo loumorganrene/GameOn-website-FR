@@ -15,6 +15,7 @@ const formData = document.querySelectorAll(".formData");
 const tournamentLbl = document.querySelector(".text-label")
 const closeBtn = document.querySelector(".close");
 const submitBtn = document.querySelector(".btn-submit");
+const thankMsg = document.querySelector(".modal-thank");
 
 // Form Elements
 const firstName = document.getElementById("first");
@@ -24,7 +25,6 @@ const birthdate = document.getElementById("birthdate");
 const quantity = document.getElementById("quantity");
 const tournament = document.querySelector(`input[name="location"]`);
 const cge = document.querySelector("#checkbox1");
-const thankMsg = document.querySelector(".modal-thank");
 
 // Regex
 const emailRegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))+$/;
@@ -46,6 +46,7 @@ closeBtn.addEventListener("click", closeModal);
 // close modal form
 function closeModal() {
   modalbg.style.display = "none";
+  window.location.reload(true);
 }
 
 // verify firstname
@@ -149,18 +150,23 @@ function validate(e) {
   cgeInvalid() === true
   ) {
     function thanksModal() {
-      const elt = 0;
-      for (let i = 0; i < formData.length; i++) {
-        formData[i].style.display = "none";
-      }
-      tournamentLbl.style.display = "none";
-      thankMsg.style.display = "block";
+      form.style.visibility= "hidden";
       submitBtn.setAttribute("value", "Fermer");
+      submitBtn.style.visibility= "visible";
+      thankMsg.style.visibility= "visible";
       submitBtn.addEventListener("click", closeModal);
     }
     thanksModal();
   } 
   else {
-    console.log("Formulaire incomplet")
+    firstNameInvalid(),
+    lastNameInvalid(),
+    emailInvalid(),
+    birthdateInvalid(),
+    quantityInvalid(),
+    tournamentInvalid(),
+    cgeInvalid(),
+    console.log("Formulaire incomplet");
   }
 }
+
