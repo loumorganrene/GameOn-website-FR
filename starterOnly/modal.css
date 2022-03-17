@@ -11,13 +11,13 @@
 
 /* Landing Page */
 body {
-  margin: 0;
   display: flex;
   flex-direction: column;
   background-image: url("background.png");
   font-family: var(--font-default);
   font-size: 18px;
   max-width: 1300px;
+  max-height: 100%;
   margin: 0 auto;
 }
 p {
@@ -69,7 +69,14 @@ img {
 
 @media screen and (max-width: 768px) {
   .logo {
-    width: 50%;
+    width: 46%;
+    height: auto;
+  }
+  .topnav {
+    overflow: visible;
+  }
+  .topnav img {
+      padding-bottom: 0;
   }
   .topnav a {display: none;}
   .topnav a.icon {
@@ -82,7 +89,7 @@ img {
     color: #ffffff;
     border-radius: 15px;
   }
-  .topnav.responsive {position: relative;}
+  .topnav.responsive {position: sticky;}
   .topnav.responsive .icon {
     position: absolute;
     right: 0;
@@ -107,7 +114,12 @@ main {
   border-radius: 2rem;
   text-align: justify;
 }
-
+@media screen and (max-width: 768px) {
+  main {
+    padding-top: 0;
+    margin: 0 20px 0;
+  }
+}
 .modal-btn {
   font-size: 145%;
   background: #fe142f;
@@ -124,11 +136,19 @@ main {
   background: #3876ac;
 }
 
-/* Footer */
-.footer {
-  margin: 20px;
-  padding: 10px;
-  font-family: var(--font-slab);
+.copyrights {
+  color: #fe142f;
+  padding: 0;
+  font-size: 1rem;
+  margin: 60px 0 30px;
+  font-weight: bolder;
+}
+@media screen and (max-width: 768px) {
+  .copyrights {
+    font-size: .5rem;
+    margin: 1.5rem 0;
+    text-align: center;
+  }
 }
 
 /* Modal form */
@@ -162,7 +182,12 @@ main {
   overflow: auto;
   background-color: rgba(26, 39, 156, 0.4);
 }
-
+@media screen and (max-width: 768px) {
+  .bground {
+    bottom: 0;
+    background-color: rgba(26, 39, 156, 0);
+  }
+}
 .content {
   margin: 5% auto;
   width: 100%;
@@ -177,12 +202,11 @@ main {
   padding-top: 10px;
 }
 @media screen and (max-width: 768px) {
-  .bground {
-    position:absolute;
-    top: 50px;
-    background-color: rgba(26, 39, 156, 0);
+  .content {
+    border-radius: 10px 10px 0 0;
   }
 }
+
 .modal-thank {
   visibility: hidden;
   position: absolute;
@@ -198,6 +222,11 @@ main {
   padding: 15px 8%;
   margin: 15px auto;
 }
+@media screen and (max-width: 768px) {
+  .modal-body {
+    margin: 0 auto;
+  }
+}
 
 label {
   font-family: var(--font-default);
@@ -206,11 +235,18 @@ label {
   display: inline-block;
   margin-bottom: 11px;
 }
+@media screen and (max-width: 768px) {
+  label {
+    font-size: .8rem;
+  }
+}
+
 input {
   padding: 8px;
   border: 0.8px solid #ccc;
   outline: none;
 }
+
 .text-control {
   margin: 0;
   padding: 8px;
@@ -219,6 +255,7 @@ input {
   font-size: 20px;
   height: 48px;
 }
+
 .formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
@@ -249,6 +286,7 @@ input[data-error]::after {
   font-size: 12px;
   font-weight: normal;
 }
+
 .checkbox-label .checkbox-icon,
 .checkbox2-label .checkbox-icon {
   display: block;
@@ -306,6 +344,13 @@ input[data-error]::after {
   left: 21%;
   top: 19%;
 }
+@media screen and (max-width: 768px) {
+  .checkbox2-label {
+    font-size: .718rem;
+    text-justify: none;
+  }
+}
+
 .close {
   position: absolute;
   right: 15px;
@@ -331,6 +376,19 @@ input[data-error]::after {
 .close:after {
   transform: rotate(-45deg);
 }
+
+@media screen and (max-width: 768px) {
+  .close {
+    right: 15px;
+    width: 25px;
+    height: 25px;
+  }
+  .close:before,
+  .close:after {
+    height: 25px;
+  }
+}
+
 .btn-submit,
 .btn-signup {
   background: #fe142f;
@@ -414,15 +472,31 @@ input[data-error]::after {
   font-weight: normal;
   font-size: 16px;
 }
+@media screen and (max-width: 768px) {
+  .text-label {
+    font-size: .78rem;
+  }
+}
+
 .hero-section {
   min-height: 93vh;
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   overflow: hidden;
-  box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 7px 7px 3px rgba(0, 0, 0, 0.2);
   margin-bottom: 10px;
 }
+@media screen and (max-width: 768px) {
+  .hero-section {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    box-shadow: unset;
+    margin-bottom: 0;
+  }
+}
+
 .hero-content {
   padding: 51px 67px;
   grid-column: span 4;
@@ -441,6 +515,17 @@ input[data-error]::after {
   right: -80px;
   top: 0;
 }
+@media screen and (max-width: 768px) {
+  .hero-content {
+    background: #fff;
+    color: #000;
+    padding: 0;
+  }
+  .hero-content::after {
+    content: unset;
+  }
+}
+
 .hero-content > * {
   position: relative;
   z-index: 1;
@@ -456,6 +541,19 @@ input[data-error]::after {
   margin-top: 57px;
   padding: 0;
 }
+@media screen and (max-width: 768px) {
+  .hero-headline {
+    font-size: clamp(2.2rem, 1vw, 4.5rem);
+    font-weight: bold;
+    white-space: normal;
+  }
+  .hero-text {
+    width: unset;
+    font-size: clamp(.84rem, 1vw, 1rem);
+    margin-top: 1rem;
+  }
+}
+
 .btn-signup {
   outline: none;
   text-transform: capitalize;
@@ -464,6 +562,12 @@ input[data-error]::after {
   margin: 0;
   margin-top: 59px;
 }
+@media screen and (max-width: 768px) {
+  .hero-content .btn-signup {
+    display: none;
+  }
+}
+
 .hero-img {
   grid-column: span 8;
 }
@@ -473,65 +577,25 @@ input[data-error]::after {
   display: block;
   padding: 0;
 }
-.copyrights {
-  color: #fe142f;
-  padding: 0;
-  font-size: 1rem;
-  margin: 60px 0 30px;
-  font-weight: bolder;
-}
-.hero-section > .btn-signup {
-  display: none;
-}
-footer {
-  padding-left: 2vw;
-  padding-right: 2vw;
-  margin: 0 20px;
-}
-
 @media screen and (max-width: 768px) {
-  .hero-section {
-    display: block;
-    min-height: 0;
-    box-shadow: unset;
-    margin-bottom: 0;
-  }
-  .hero-content {
-    background: #fff;
-    color: #000;
-    padding: 0;
-  }
-  .hero-content::after {
-    content: unset;
-  }
-  .hero-content .btn-signup {
-    display: none;
-  }
-  .hero-headline {
-    font-size: clamp(2.35rem, 1vw, 4.5rem);
-    white-space: normal;
-  }
-  .hero-text {
-    width: unset;
-    font-size: clamp(.84rem, 1vw, 1rem);
-    margin-top: 1rem;
-  }
   .hero-img img {
     border-radius: 10px;
     margin-top: 2rem;
   }
+}
+
+.hero-section > .btn-signup {
+  display: none;
+}
+@media screen and (max-width: 768px) {
   .hero-section > .btn-signup {
-    display: block;
-    padding: .6rem 3rem;
-    margin: 2.5rem 0 0 3.5rem;
-  }
-  .copyrights {
-    margin: 2rem 0;
-    text-align: center;
-  }
-  footer {
-    padding: 0;
-    margin: 0;
+    display: flex;
+    align-self: center;
+    padding: .4rem 2.5rem;
+    margin-top: 1.5rem;
+    border-radius: 10px;
+    font-size: .8rem;
+    font-family: var(--font-default);
   }
 }
 
