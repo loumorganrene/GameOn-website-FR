@@ -165,8 +165,7 @@ function validate(e) {
     birthdateInvalid(),
     quantityInvalid(),
     tournamentInvalid(),
-    cgeInvalid(),
-    console.log("Formulaire incomplet");
+    cgeInvalid();
   }
 }
 
