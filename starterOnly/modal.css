@@ -32,6 +32,7 @@ img {
 .topnav {
   overflow: hidden;
   margin: 3.5%;
+  margin-right: 0;
 }
 .header-logo {
     float: left;
@@ -48,21 +49,23 @@ img {
   display: block;
   color: #000000;
   text-align: center;
-  padding: .5rem .7rem;
+  padding: .55rem .7rem;
   margin: 5px;
   text-decoration: none;
   font-size: 1.1rem;
-  font-family: Roboto, sans-serif;
+  font-family: var(--font-default);
 }
 .topnav a:hover {
   background-color: #ff0000;
   color: #ffffff;
-  border-radius: 10px;
+  border-radius: 9px;
+
 }
 .topnav a.active {
   background-color: #ff0000;
   color: #ffffff;
-  border-radius: 10px;
+  border-radius: 9px;
+  font-weight: 300;
   text-decoration: underline;
 }
 .topnav .icon {
@@ -71,12 +74,18 @@ img {
 }
 
 @media screen and (max-width: 768px) {
+  .main-navbar {
+    float: right;
+    margin: 0;
+  }
   .logo {
     width: 46%;
     height: auto;
   }
   .topnav {
     overflow: visible;
+    margin: 1.5rem 1rem;
+    margin-bottom: 0;
   }
   .topnav img {
       padding-bottom: 0;
@@ -86,9 +95,11 @@ img {
     float: right;
     display: block;
     padding: .5rem;
+    font-size: 1.5rem;
   }
-  .topnav a.active {
-    background-color: #ffffff;
+  .topnav a.active,
+  .topnav a.active:hover {
+    background-color: #ff0000;
     color: #ffffff;
     border-radius: 15px;
   }
@@ -100,9 +111,21 @@ img {
   }
   .topnav.responsive a {
     float: none;
+    margin: 0;
+
     display: block;
-    text-align: left;
+    font-weight: 300;
+    text-align: right;
   }
+  .topnav a:hover {
+    background: none;
+    color:#ff0000;
+  }
+  a.icon:hover  {
+    background: none;
+    color: #ff0000;
+  }
+
 }
 
 /* Body */

@@ -91,6 +91,7 @@ function emailInvalid() {
   }
 }
 
+
 // verify birthdate
 formData[3].addEventListener("input", birthdateInvalid); // verify entry on type
 function birthdateInvalid() {
@@ -127,6 +128,7 @@ function quantityInvalid() {
 }
 
 // verify checked radio button
+formData[5].addEventListener("input", tournamentInvalid); // verify entry on type
 function tournamentInvalid() {
   if (document.querySelector('input[name="location"]:checked') === null) {
     formData[5].setAttribute("data-error-visible", "true");
