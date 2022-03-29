@@ -231,7 +231,7 @@ main {
 
 label {
   font-family: var(--font-default);
-  font-size: 17px;
+  font-size: .85rem;
   font-weight: normal;
   display: inline-block;
   margin-bottom: 11px;
@@ -280,12 +280,26 @@ input[data-error]::after {
     font-size: 0.4em;
     color: red;
 }
+
 .checkbox-label,
 .checkbox2-label {
   position: relative;
-  margin-left: 36px;
-  font-size: 12px;
+  margin-bottom: 0;
+  margin-left: 1.5rem;
+  font-size: .85rem;
+  text-justify: none;
   font-weight: normal;
+}
+
+.checkbox1 {
+  margin-top: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .checkbox-label,
+  .checkbox2-label {
+    font-size: .718rem;
+  }
 }
 
 .checkbox-label .checkbox-icon,
@@ -293,16 +307,30 @@ input[data-error]::after {
   display: block;
   width: 20px;
   height: 20px;
-  border: 2px solid #279e7a;
+  border: 1px solid #279e7a;
   border-radius: 50%;
   text-indent: 29px;
   white-space: nowrap;
   position: absolute;
-  left: -30px;
+  left: -25px;
   top: -1px;
   transition: 0.3s;
 }
-.checkbox-label .checkbox-icon::after,
+.checkbox-label .checkbox-icon::after {
+  content: "";
+  width: 0.85rem;
+  height: 0.85rem;
+  background-color: #279e7a;
+  border-radius: 50%;
+  text-indent: 29px;
+  white-space: nowrap;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: 0.3s;
+  opacity: 0;
+}
 .checkbox2-label .checkbox-icon::after {
   content: "";
   width: 13px;
@@ -346,9 +374,11 @@ input[data-error]::after {
   top: 19%;
 }
 @media screen and (max-width: 768px) {
-  .checkbox2-label {
-    font-size: .718rem;
-    text-justify: none;
+  .checkbox2-label .checkbox-icon::after {
+    width: 7px;
+    height: 4px;
+    left: 21%;
+    top: 20%;
   }
 }
 
@@ -470,8 +500,11 @@ input[data-error]::after {
 }
 /* custom select end */
 .text-label {
+  margin: 0;
+  padding: 0.6rem 0 0.1rem;
+  padding-top: 0.6rem;
   font-weight: normal;
-  font-size: 16px;
+  font-size: .85rem;
 }
 @media screen and (max-width: 768px) {
   .text-label {
