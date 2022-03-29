@@ -94,7 +94,14 @@ function emailInvalid() {
 // verify birthdate
 formData[3].addEventListener("input", birthdateInvalid); // verify entry on type
 function birthdateInvalid() {
-  if (!birthdate.value.match(birthdateRegExp)) {
+  // verify age limite from user input entry birthdate
+  let today = new Date();
+  let birthdateValue = new Date(birthdate.value);
+  let todayYear = today.getFullYear();
+  let userBirthYear = birthdateValue.getFullYear();
+  let validDate = todayYear - 18;
+  let birthDateisValid = validDate <= userBirthYear;
+  if (!birthdate.value.match(birthdateRegExp) || birthDateisValid) {
     formData[3].setAttribute("data-error-visible", "true");
     formData[3].setAttribute("data-error", "Entrez une date de naissance valide.");
     return false;
