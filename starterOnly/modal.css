@@ -203,7 +203,8 @@ main {
 }
 @media screen and (max-width: 768px) {
   .content {
-    border-radius: 10px 10px 0 0;
+    top: 50px;
+    /* border-radius: 10px 10px 0 0; */
   }
 }
 
