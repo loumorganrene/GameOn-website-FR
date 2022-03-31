@@ -13,7 +13,7 @@
 body {
   display: flex;
   flex-direction: column;
-  background-image: url("background.png");
+  /* background-image: url("background.png"); */
   font-family: var(--font-default);
   font-size: 18px;
   max-width: 1300px;
@@ -59,7 +59,6 @@ img {
   background-color: #ff0000;
   color: #ffffff;
   border-radius: 9px;
-
 }
 .topnav a.active {
   background-color: #ff0000;
@@ -79,12 +78,12 @@ img {
     margin: 0;
   }
   .logo {
-    width: 46%;
+    width: 49%;
     height: auto;
   }
   .topnav {
     overflow: visible;
-    margin: 1.5rem 1rem;
+    margin: 1rem;
     margin-bottom: 0;
   }
   .topnav img {
@@ -112,7 +111,6 @@ img {
   .topnav.responsive a {
     float: none;
     margin: 0;
-
     display: block;
     font-weight: 300;
     text-align: right;
@@ -229,7 +227,7 @@ main {
 }
 @media screen and (max-width: 768px) {
   .content {
-    top: 50px;
+    top: 60px;
     /* border-radius: 10px 10px 0 0; */
   }
 }

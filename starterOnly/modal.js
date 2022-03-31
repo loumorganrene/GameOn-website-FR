@@ -50,8 +50,8 @@ function closeModal() {
 }
 
 // verify firstname
-formData[0].addEventListener("input", firstNameInvalid); // verify entry on type
-function firstNameInvalid() {
+formData[0].addEventListener("input", firstNameIsValid); // verify entry on type
+function firstNameIsValid() {
   if (!firstName.value.match(nameRegExp)) {
     formData[0].setAttribute("data-error-visible", "true");
     formData[0].setAttribute("data-error", "Entrez un prénom valide.");
@@ -64,8 +64,8 @@ function firstNameInvalid() {
 }
 
 // verify lastname
-formData[1].addEventListener("input", lastNameInvalid); // verify entry on type
-function lastNameInvalid() {
+formData[1].addEventListener("input", lastNameIsValid); // verify entry on type
+function lastNameIsValid() {
   if (!lastName.value.match(nameRegExp)) {
     formData[1].setAttribute("data-error-visible", "true");
     formData[1].setAttribute("data-error", "Entrez un nom valide.");
@@ -78,8 +78,8 @@ function lastNameInvalid() {
 }
 
 // verify email
-formData[2].addEventListener("input", emailInvalid); // verify entry on type
-function emailInvalid() {
+formData[2].addEventListener("input", emailIsValid); // verify entry on type
+function emailIsValid() {
   if (!email.value.match(emailRegExp)) {
     formData[2].setAttribute("data-error-visible", "true");
     formData[2].setAttribute("data-error", "Entrez un email valide.");
@@ -93,15 +93,15 @@ function emailInvalid() {
 
 
 // verify birthdate
-formData[3].addEventListener("input", birthdateInvalid); // verify entry on type
-function birthdateInvalid() {
+formData[3].addEventListener("input", birthdateIsValid); // verify entry on type
+function birthdateIsValid() {
   // verify age limite from user input entry birthdate
-  let today = new Date();
-  let birthdateValue = new Date(birthdate.value);
-  let todayYear = today.getFullYear();
-  let userBirthYear = birthdateValue.getFullYear();
-  let validDate = todayYear - 18;
-  let birthDateisValid = validDate <= userBirthYear;
+  const today = new Date();
+  const birthdateValue = new Date(birthdate.value);
+  const todayYear = today.getFullYear();
+  const userBirthYear = birthdateValue.getFullYear();
+  const validDate = todayYear - 18;
+  const birthDateisValid = validDate <= userBirthYear;
   if (!birthdate.value.match(birthdateRegExp) || birthDateisValid) {
     formData[3].setAttribute("data-error-visible", "true");
     formData[3].setAttribute("data-error", "Entrez une date de naissance valide.");
@@ -114,8 +114,8 @@ function birthdateInvalid() {
 }
 
 // verify quantity
-formData[4].addEventListener("input", quantityInvalid); // verify entry on type
-function quantityInvalid() {
+formData[4].addEventListener("input", quantityIsValid); // verify entry on type
+function quantityIsValid() {
   if (!quantity.value.match(numberRegExp)) {
     formData[4].setAttribute("data-error-visible", "true");
     formData[4].setAttribute("data-error", "Renseignez un nombre de tournoi.");
@@ -128,8 +128,8 @@ function quantityInvalid() {
 }
 
 // verify checked radio button
-formData[5].addEventListener("input", tournamentInvalid); // verify entry on type
-function tournamentInvalid() {
+formData[5].addEventListener("input", tournamentIsValid); // verify entry on type
+function tournamentIsValid() {
   if (document.querySelector('input[name="location"]:checked') === null) {
     formData[5].setAttribute("data-error-visible", "true");
     formData[5].setAttribute("data-error", "Sélectionnez une option.");
@@ -142,8 +142,8 @@ function tournamentInvalid() {
 }
 
 // verify checked cge checkbox
-formData[6].addEventListener("input", cgeInvalid); // verify entry on check
-function cgeInvalid() {
+formData[6].addEventListener("input", cgeIsValid); // verify entry on check
+function cgeIsValid() {
     if(!cge.checked) {
       formData[6].setAttribute("data-error-visible", "true");
       formData[6].setAttribute("data-error", "Veuillez lire et accepter les conditions.");
@@ -163,13 +163,13 @@ function validate(e) {
   // prevent closing modal & erasing user input data
   e.preventDefault();
   if (
-  firstNameInvalid() &&
-  lastNameInvalid() &&
-  emailInvalid() &&
-  birthdateInvalid() &&
-  quantityInvalid() &&
-  tournamentInvalid() &&
-  cgeInvalid() === true
+  firstNameIsValid() &&
+  lastNameIsValid() &&
+  emailIsValid() &&
+  birthdateIsValid() &&
+  quantityIsValid() &&
+  tournamentIsValid() &&
+  cgeIsValid()
   ) {
     function thanksModal() {
       form.style.visibility= "hidden";
@@ -181,13 +181,13 @@ function validate(e) {
     thanksModal();
   } 
   else {
-    firstNameInvalid(),
-    lastNameInvalid(),
-    emailInvalid(),
-    birthdateInvalid(),
-    quantityInvalid(),
-    tournamentInvalid(),
-    cgeInvalid();
+    firstNameIsValid(),
+    lastNameIsValid(),
+    emailIsValid(),
+    birthdateIsValid(),
+    quantityIsValid(),
+    tournamentIsValid(),
+    cgeIsValid();
   }
 }
 
