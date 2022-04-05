@@ -251,6 +251,18 @@ main {
   .modal-body {
     margin: 0 auto;
   }
+
+  .modal-thank {
+    visibility: hidden;
+    position: absolute;
+    width: 420px;
+    top: 300px;
+    left: 0;
+    font-size: 35px;
+    font-family: var(--font-default);
+    font-weight: normal;
+    text-align: center;
+  }
 }
 
 label {
