@@ -46,7 +46,9 @@ closeBtn.addEventListener("click", closeModal);
 // close modal form
 function closeModal() {
   modalbg.style.display = "none";
-  window.location.reload(true);
+  form.reset();
+  form.style.visibility= "visible";
+  thankMsg.style.visibility= "hidden";
 }
 
 // verify firstname
