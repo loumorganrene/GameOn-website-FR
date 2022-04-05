@@ -49,6 +49,7 @@ function closeModal() {
   form.reset();
   form.style.visibility= "visible";
   thankMsg.style.visibility= "hidden";
+  submitBtn.setAttribute("value", "C'est parti");
 }
 
 // verify firstname
