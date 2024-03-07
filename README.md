@@ -7,7 +7,7 @@ Celui-ci a:
 - terminé la mise en page et le contenu de la page d'accueil ainsi que de la modale du formulaire.
 - ajouté le JavaScript pour le lancement de la maquette.
 
-## Technologie:
+## Technologies:
 - HTML
 - CSS
 - JavaScript
