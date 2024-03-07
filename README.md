@@ -1,4 +1,4 @@
-# GameOn
+# GameOn - Terminé le 15 févr 2022
 ## Scenario
 GameOn est une PME spécialisée dans les conférences et les concours de jeux.
 L'équipe a décidé de simplifié la nouvelle page d'accueil et l'inscription aux concours après avoir reçu des commentaires négatifs de la part de certains utilisateurs.
